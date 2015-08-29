@@ -53,6 +53,7 @@ plugins=(git colored-man)
 
 # User configuration
 
+export GOPATH="/home/andrea/goWorkspace"
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/andrea/bin:/home/andrea/.cabal/bin:/home/andrea/.composer/vendor/bin/:/home/andrea/bin:/home/andrea/.cabal/bin:/home/andrea/.composer/vendor/bin/"
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -85,3 +86,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
  alias status="git status"
+ alias py="python"
+ aliases tree="tree -L 2"
