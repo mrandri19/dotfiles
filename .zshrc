@@ -49,7 +49,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man) 
+plugins=(colored-man) 
 
 # User configuration
 
@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
- alias status="git status"
+ alias s="git status"
  alias py="python"
- aliases tree="tree -L 2"
+ alias tree="tree -L 2"
+ alias xdbmcfg="xrdb -load /home/andrea/.config/X11/.Xresources"

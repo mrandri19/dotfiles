@@ -1,6 +1,4 @@
 " -- Compability -- "
-
-
 set encoding=utf-8  " always encode in utf
 set nocompatible    " use vim defaults instead of vi
 
@@ -9,7 +7,7 @@ set nocompatible    " use vim defaults instead of vi
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/vundle' 
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'mattn/emmet-vim'
@@ -18,13 +16,16 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'DoxygenToolkit.vim'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'marijnh/tern_for_vim'
 Plugin 'Shougo/neocomplete.vim'
 "Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
-Plugin 'Rip-Rip/clang_complete'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'ervandew/supertab'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'jalcine/cmake.vim'
+Plugin 'fatih/vim-go'
+Plugin 'elixir-lang/vim-elixir'
 call vundle#end()
 
 
@@ -33,7 +34,6 @@ call vundle#end()
 
 " File detection
 filetype plugin indent on
-autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
 syntax on
 " Bindings
 let mapleader = "\<Space>"
@@ -42,6 +42,13 @@ map <Leader><TAB> :bnext<CR>
 map <Leader><S-TAB> :bprevious<CR>
 
 map <C-s> :w<CR> "Binds ctrl-s to save (I <3 sublime)
+
+"C-d for fast toggle between shell and VIM
+noremap <C-d> :sh<cr>
+
+"Pretty tab symbols
+set list
+set listchars=tab:>-,trail:-
 
 " General
 set background=dark            " dark background
@@ -125,3 +132,17 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 "Syntastic
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+"vim-go settings
+let g:go_fmt_command = "goimports"
+autocmd FileType go setlocal shiftwidth=2 tabstop=2
