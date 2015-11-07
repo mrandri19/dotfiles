@@ -16,16 +16,20 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'DoxygenToolkit.vim'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'Shougo/neocomplete.vim'
-"Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'digitaltoad/vim-jade'
 Plugin 'jalcine/cmake.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'pangloss/vim-javascript'
+" Languages
+Plugin 'digitaltoad/vim-jade'
 Plugin 'fatih/vim-go'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'racer-rust/vim-racer'
+Plugin 'rust-lang/rust.vim'
+Plugin 'jiangmiao/auto-pairs'
 call vundle#end()
 
 
@@ -41,14 +45,16 @@ map <Leader><TAB> :bnext<CR>
 " Binds leader+tab and leader+shift+tab to cycle through buffers
 map <Leader><S-TAB> :bprevious<CR>
 
-map <C-s> :w<CR> "Binds ctrl-s to save (I <3 sublime)
 
+map <Leader>c :noh<CR>
+map <leader>x :!rustc %<CR>
 "C-d for fast toggle between shell and VIM
 noremap <C-d> :sh<cr>
 
 "Pretty tab symbols
 set list
-set listchars=tab:>-,trail:-
+set listchars=trail:·,eol:¬
+
 
 " General
 set background=dark            " dark background
@@ -93,6 +99,7 @@ set ruler                      " shows ruler
 
 " Colours
 set t_Co=256
+colorscheme solarized
 
 "Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -109,9 +116,6 @@ map <Leader>n :NERDTreeToggle<CR>
 
 " DoxygenToolkit
 map <Leader>d :Dox<CR>
-
-"Linux Kernel indent
-nnoremap <silent> <leader>k :SetLinuxFormatting<cr><cr>
 
 " Neocomplete
 "Use neocomplete.
@@ -146,3 +150,8 @@ let g:syntastic_check_on_wq = 0
 "vim-go settings
 let g:go_fmt_command = "goimports"
 autocmd FileType go setlocal shiftwidth=2 tabstop=2
+
+"vim-racer settings
+set hidden
+let g:racer_cmd = "/home/andrea/build/racer/target/release/racer"
+let $RUST_SRC_PATH="/home/andrea/rustWorkspace/rustc-1.4.0/src/"

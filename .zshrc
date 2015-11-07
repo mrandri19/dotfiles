@@ -5,7 +5,7 @@ export ZSH=/home/andrea/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="simple"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -54,7 +54,7 @@ plugins=(colored-man)
 # User configuration
 
 export GOPATH="/home/andrea/goWorkspace"
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/andrea/bin:/home/andrea/.cabal/bin:/home/andrea/.composer/vendor/bin/:/home/andrea/bin:/home/andrea/.cabal/bin:/home/andrea/.composer/vendor/bin/"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/andrea/bin:/home/andrea/.cabal/bin:/home/andrea/.composer/vendor/bin/:/home/andrea/bin:/home/andrea/.cabal/bin:/home/andrea/.composer/vendor/bin/:/home/andrea/build/racer/target/release/"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -69,13 +69,20 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
- export EDITOR="vim" 
+export EDITOR="vim" 
+export RUST_SRC_PATH="/home/andrea/rustWorkspace/rustc-1.4.0/src/"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
  export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Functions
+function mkcd {
+    mkdir -p "$1"
+    cd "$1"
+}
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -89,3 +96,5 @@ source $ZSH/oh-my-zsh.sh
  alias py="python"
  alias tree="tree -L 2"
  alias xdbmcfg="xrdb -load /home/andrea/.config/X11/.Xresources"
+ alias nv="nvim"
+ alias v="vim"
