@@ -10,7 +10,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
-Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'DoxygenToolkit.vim'
@@ -22,14 +21,17 @@ Plugin 'Shougo/unite.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'jalcine/cmake.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'pangloss/vim-javascript'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'ntpeters/vim-better-whitespace'
 " Languages
+Plugin 'mattn/emmet-vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'fatih/vim-go'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'racer-rust/vim-racer'
 Plugin 'rust-lang/rust.vim'
-Plugin 'jiangmiao/auto-pairs'
+Plugin 'davidhalter/jedi-vim'
 call vundle#end()
 
 
@@ -41,20 +43,15 @@ filetype plugin indent on
 syntax on
 " Bindings
 let mapleader = "\<Space>"
-map <Leader><TAB> :bnext<CR> 
+map <Leader><TAB> :bnext<CR>
 " Binds leader+tab and leader+shift+tab to cycle through buffers
 map <Leader><S-TAB> :bprevious<CR>
 
-
+map <Leader>s :update<CR>
 map <Leader>c :noh<CR>
 map <leader>x :!rustc %<CR>
 "C-d for fast toggle between shell and VIM
 noremap <C-d> :sh<cr>
-
-"Pretty tab symbols
-set list
-set listchars=trail:·,eol:¬
-
 
 " General
 set background=dark            " dark background
@@ -105,10 +102,8 @@ colorscheme solarized
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
- 
+
 
 " Nerd Tree toggles with Ctrl+n
 " (<CR> means enter)
@@ -136,6 +131,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 "Syntastic
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_javascript_checkers = ['eslint']
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
