@@ -23,4 +23,4 @@ setxkbmap -option caps:escape
 urxvtd -q -o -f
 
 #Starts the window manager
-exec awesome -c ~/.config/awesome/awesomerc.lua
+exec awesome -c ~/.config/awesome/rc.lua
