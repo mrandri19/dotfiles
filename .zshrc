@@ -49,16 +49,16 @@ ZSH_THEME="simple"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man) 
+plugins=(colored-man git)
 
 # User configuration
 
 export GOPATH="/home/andrea/goWorkspace"
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/andrea/bin:/home/andrea/.cabal/bin:/home/andrea/.composer/vendor/bin/:/home/andrea/bin:/home/andrea/.cabal/bin:/home/andrea/.composer/vendor/bin/:/home/andrea/build/racer/target/release/"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/andrea/bin:/home/andrea/.composer/vendor/bin/:/home/andrea/bin:home/andrea/build/racer/target/release/:/home/andrea/.gem/ruby/2.2.0/bin/:/home/andrea/.cabal/bin/"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-
+source /usr/bin/virtualenvwrapper.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -69,8 +69,9 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR="vim" 
+export EDITOR="vim"
 export RUST_SRC_PATH="/home/andrea/rustWorkspace/rustc-1.4.0/src/"
+export WORKON_HOME="/home/andrea/pythonWorkspace/"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -98,6 +99,7 @@ function mkcd {
  alias xdbmcfg="xrdb -load /home/andrea/.config/X11/.Xresources"
  alias nv="nvim"
  alias v="vim"
+
 ###-begin-npm-completion-###
 #
 # npm command completion script
@@ -155,3 +157,29 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+# key bindings
+bindkey "e[1~" beginning-of-line
+bindkey "e[4~" end-of-line
+bindkey "e[5~" beginning-of-history
+bindkey "e[6~" end-of-history
+bindkey "e[3~" delete-char
+bindkey "e[2~" quoted-insert
+bindkey "e[5C" forward-word
+bindkey "eOc" emacs-forward-word
+bindkey "e[5D" backward-word
+bindkey "eOd" emacs-backward-word
+bindkey "ee[C" forward-word
+bindkey "ee[D" backward-word
+bindkey "^H" backward-delete-word
+# # for rxvt
+bindkey "e[8~" end-of-line
+bindkey "e[7~" beginning-of-line
+# # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+bindkey "eOH" beginning-of-line
+bindkey "eOF" end-of-line
+# # for freebsd console
+bindkey "e[H" beginning-of-line
+bindkey "e[F" end-of-line
+# # completion in the middle of a line
+bindkey '^i' expand-or-complete-prefix

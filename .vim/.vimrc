@@ -8,6 +8,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
@@ -15,14 +16,15 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'DoxygenToolkit.vim'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
+
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'jalcine/cmake.vim'
+Plugin 'w0ng/vim-hybrid'
+
 Plugin 'kien/ctrlp.vim'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'tpope/vim-surround'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'janko-m/vim-test'
 " Languages
 Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
@@ -32,6 +34,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'racer-rust/vim-racer'
 Plugin 'rust-lang/rust.vim'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 call vundle#end()
 
 
@@ -39,7 +42,7 @@ call vundle#end()
 
 
 " File detection
-filetype plugin indent on
+"filetype plugin indent on
 syntax on
 " Bindings
 let mapleader = "\<Space>"
@@ -80,8 +83,8 @@ set autoindent                 " copy indent from previous line
 set expandtab                  " replace tabs with spaces
 set shiftwidth=4               " spaces for autoindenting
 set smarttab                   " <BS> removes shiftwidth worth of spaces
-set softtabstop=2              " spaces for editing, e.g. <Tab> or <BS>
-set tabstop=2                  " spaces for <Tab>
+set softtabstop=4              " spaces for editing, e.g. <Tab> or <BS>
+set tabstop=4                  " spaces for <Tab>
 
 " Searches
 set hlsearch                   " highlight search results
@@ -94,9 +97,18 @@ set textwidth=0                " don't break lines after some maximum width
 set wildmenu                   " enhanced cmd line completion
 set ruler                      " shows ruler
 
+" Navigating windows
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " Colours
 set t_Co=256
-colorscheme solarized
+colorscheme hybrid
+
+" Hybrid vim
+let g:hybrid_use_Xresources = 1
 
 "Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -112,26 +124,28 @@ map <Leader>n :NERDTreeToggle<CR>
 " DoxygenToolkit
 map <Leader>d :Dox<CR>
 
-" Neocomplete
-"Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-"Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-"Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-return neocomplete#close_popup() . "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"" Neocomplete
+""Use neocomplete.
+"let g:neocomplete#enable_at_startup = 1
+""Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+""Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 2
+"" Recommended key-mappings.
+"" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"return neocomplete#close_popup() . "\<CR>"
+"endfunction
+"" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 "Syntastic
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_javascript_checkers = ['eslint']
+
+let g:syntastic_html_tidy_exec = 'htmlhint'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -151,3 +165,8 @@ autocmd FileType go setlocal shiftwidth=2 tabstop=2
 set hidden
 let g:racer_cmd = "/home/andrea/build/racer/target/release/racer"
 let $RUST_SRC_PATH="/home/andrea/rustWorkspace/rustc-1.4.0/src/"
+
+" vim-javascript settings
+
+" vim-hybrid
+let g:hybrid_use_Xresources = 1
