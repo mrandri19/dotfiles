@@ -1,5 +1,4 @@
 .config/
-!.config/awesome/
 .ts3client/
 .fonts/
 .ssh/
