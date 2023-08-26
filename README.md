@@ -9,6 +9,12 @@
 
 -  `git clone https://github.com/preservim/nerdtree.git ~/.vim/bundle/nerdtree`
 
+## Install coc.nvim (language server host)
+
+(Requires nodejs to be installed)
+
+-  `git clone -b release https://github.com/neoclide/coc.nvim`
+
 ## VIM configuration
 
 -  Copy `.vimrc` into `~/.vimrc`
