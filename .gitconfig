@@ -1,5 +1,0 @@
-[user]
-	email = andrecogno@hotmail.it
-	name = mrandri19
-[credential]
-	helper = cache --timeout=3600
